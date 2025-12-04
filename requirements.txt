@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+websockets
+opencv-python
+paho-mqtt
+jinja2
+python-multipart
+mediapipe

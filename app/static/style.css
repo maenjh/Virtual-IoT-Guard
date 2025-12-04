@@ -1,0 +1,246 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --accent-color: #00ff88;
+    --danger-color: #ff4757;
+    --bulb-off: #333;
+    --bulb-on: #ffeb3b;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(45deg, #00ff88, #00b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.status-badge {
+    background: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-badge.connected {
+    background: rgba(0, 255, 136, 0.2);
+    color: var(--accent-color);
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.light-control {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.bulb-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 2rem 0;
+}
+
+.bulb {
+    width: 60px;
+    height: 60px;
+    background: var(--bulb-off);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.glow {
+    width: 100%;
+    height: 100%;
+    background: var(--bulb-on);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.bulb.on {
+    background: var(--bulb-on);
+    box-shadow: 0 0 10px var(--bulb-on);
+}
+
+.bulb.on + .glow {
+    opacity: 0.6;
+}
+
+#lightStatusText {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.logs {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.env-control {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sensor-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.sensor-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.sensor-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.sensor-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.control-panel {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.control-panel h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-on {
+    background: #00b894;
+    color: white;
+}
+
+.btn-on:hover {
+    background: #00a383;
+}
+
+.btn-off {
+    background: #ff7675;
+    color: white;
+}
+
+.btn-off:hover {
+    background: #d63031;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0.8rem;
+    border-bottom: 1px solid #333;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideIn 0.3s ease;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.log-time {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}

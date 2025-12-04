@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual IoT Guard Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Virtual IoT Guard</h1>
+            <div class="status-badge" id="connectionStatus">Disconnected</div>
+        </header>
+
+        <main>
+            <div class="card light-control">
+                <h2>Security Status</h2>
+                <div class="bulb-container">
+                    <div class="bulb" id="lightBulb"></div>
+                    <div class="glow" id="lightGlow"></div>
+                </div>
+                <p id="lightStatusText">SECURE</p>
+            </div>
+
+            <div class="card env-control">
+                <h2>Environment Monitor</h2>
+                <div class="sensor-data">
+                    <div class="sensor-item">
+                        <span class="sensor-label">Temperature</span>
+                        <span class="sensor-value" id="tempValue">-- °C</span>
+                    </div>
+                    <div class="sensor-item">
+                        <span class="sensor-label">Humidity</span>
+                        <span class="sensor-value" id="humidValue">-- %</span>
+                    </div>
+                </div>
+                <div class="control-panel">
+                    <h3>Fan Control</h3>
+                    <div class="btn-group">
+                        <button onclick="controlFan('on')" class="btn btn-on">ON</button>
+                        <button onclick="controlFan('off')" class="btn btn-off">OFF</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card logs full-width">
+                <h2>System Logs</h2>
+                <ul id="logList">
+                    <!-- Logs will appear here -->
+                </ul>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
